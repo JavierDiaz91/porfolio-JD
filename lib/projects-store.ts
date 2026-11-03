@@ -49,7 +49,7 @@ const defaultProjects: Project[] = [
     id: "2",
     title: "Aplicación Windows para impresión de etiquetas",
     description: "Aplicación de escritorio que procesa planillas Excel y automatiza la impresión de etiquetas para impresoras Zebra mediante código ZPL.",
-    imageUrl: "",
+    imageUrl: "/images/impresion-etiquetas-zebra.svg",
     tags: ["WinForms", "Excel", "ZPL"],
     featured: true,
     status: "published",
@@ -96,7 +96,18 @@ export function getProjects(): Project[] {
   }
 
   try {
-    return JSON.parse(stored)
+    const projects: Project[] = JSON.parse(stored)
+    let migrated = false
+    const normalized = projects.map((project) => {
+      const isLabelProject = project.title.toLocaleLowerCase().includes("impresión de etiquetas")
+      if (isLabelProject && !project.imageUrl) {
+        migrated = true
+        return { ...project, imageUrl: "/images/impresion-etiquetas-zebra.svg" }
+      }
+      return project
+    })
+    if (migrated) localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalized))
+    return normalized
   } catch {
     return defaultProjects
   }
