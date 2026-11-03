@@ -17,7 +17,7 @@ export function Contact() {
   const [showEmailOptions, setShowEmailOptions] = useState(false)
   const [copied, setCopied] = useState(false)
 
-  const whatsappNumber = "5493492305597" 
+  const whatsappNumber = "5493492319868" 
   const contactEmail = "jdiazdesarrollo@gmail.com"
   const whatsappMessage = encodeURIComponent("¡Hola Javier! Vi tu portfolio y me gustaría que hablemos sobre un proyecto.")
 
