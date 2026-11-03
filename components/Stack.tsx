@@ -1,29 +1,28 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Layout, Globe, MonitorSmartphone, Smartphone } from "lucide-react"
+import { Code2, Database, MonitorSmartphone, Globe } from "lucide-react"
 
-// Cambiamos el enfoque técnico por soluciones comerciales concretas
 const services = [
   {
-    title: "Landing Pages",
-    icon: Layout,
-    description: "Páginas de una sola sección optimizadas para capturar clientes, lanzar productos o promocionar servicios. Diseño de alto impacto visual, velocidad de carga premium y conversión asegurada.",
+    title: "C# y .NET",
+    icon: Code2,
+    description: "Desarrollo y mantenimiento de sistemas, análisis de requerimientos e intervención en código fuente de aplicaciones empresariales.",
   },
   {
-    title: "Aplicaciones Web (Sistemas / SaaS)",
+    title: "SQL y bases de datos",
+    icon: Database,
+    description: "Consultas y modificaciones de datos para diagnosticar incidentes y sostener la continuidad operativa de los sistemas.",
+  },
+  {
+    title: "Aplicaciones Windows",
     icon: MonitorSmartphone,
-    description: "Plataformas de gestión a medida, paneles de administración (dashboards) y herramientas de automatización en la nube. Desarrollo robusto con bases de datos seguras y flujos eficientes.",
+    description: "Herramientas de escritorio para procesos internos, incluyendo procesamiento de planillas Excel e impresión automatizada de etiquetas ZPL.",
   },
   {
-    title: "Sitios Web Corporativos",
+    title: "Desarrollo web",
     icon: Globe,
-    description: "Presencia web institucional completa y escalable para empresas o profesionales. Conectá tus canales de atención, automatizá tus formularios de contacto y posicioná tu marca.",
-  },
-  {
-    title: "Aplicaciones Móviles Android",
-    icon: Smartphone,
-    description: "Desarrollo nativo moderno para teléfonos inteligentes. Creación de interfaces fluidas con almacenamiento local independiente, sincronización en tiempo real y excelente rendimiento.",
+    description: "Portfolio desarrollado con Next.js, React y TypeScript. Experiencia complementaria en interfaces web y publicación de proyectos en GitHub.",
   },
 ]
 
@@ -57,11 +56,11 @@ export function Stack() {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-center"
         >
-          Servicios y Soluciones
+          Tecnologías y experiencia
         </motion.h2>
-        
+
         <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-          Transformo ideas y necesidades técnicas en productos digitales eficientes, estables y listos para escalar el negocio.
+          Experiencia en desarrollo y soporte de sistemas, con foco en .NET y soluciones para necesidades operativas reales.
         </p>
 
         <motion.div
@@ -79,26 +78,19 @@ export function Stack() {
                 key={service.title}
                 variants={cardVariants}
                 className="group relative p-8 rounded-xl bg-card border border-platinum/20 hover:border-bronze/50 transition-all duration-300 flex flex-col justify-between"
-                style={{
-                  boxShadow: "none",
-                }}
+                style={{ boxShadow: "none" }}
                 whileHover={{
                   boxShadow: "0 0 40px var(--bronze-glow)",
                   y: -4,
                 }}
               >
                 <div>
-                  {/* Icono con tu estilo actual */}
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-secondary mb-6 group-hover:bg-bronze/10 transition-colors duration-300">
                     <IconComponent className="h-6 w-6 text-bronze" />
                   </div>
-
-                  {/* Título del Servicio */}
                   <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-bronze transition-colors duration-300">
                     {service.title}
                   </h3>
-
-                  {/* Descripción Comercial explicativa */}
                   <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
                     {service.description}
                   </p>
