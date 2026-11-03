@@ -14,18 +14,28 @@ export async function POST(request: Request) {
     }
 
     // 2. Configuración del transportador SMTP para Gmail usando variables de entorno
+    const gmailUser = process.env.GMAIL_USER?.trim()
+    const gmailAppPassword = process.env.GMAIL_APP_PASSWORD?.replace(/\s/g, "")
+
+    if (!gmailUser || !gmailAppPassword) {
+      return NextResponse.json(
+        { error: "El envío por correo no está configurado todavía. Podés contactarme por WhatsApp." },
+        { status: 503 }
+      )
+    }
+
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD, // Tu contraseña de aplicación de 16 caracteres
+        user: gmailUser,
+        pass: gmailAppPassword,
       },
     })
 
     // 3. Diseño del correo en HTML (Estética Premium Oscura / Ámbar)
     const mailOptions = {
-      from: process.env.GMAIL_USER, // Remitente autenticado
-      to: process.env.GMAIL_USER,   // Te llega el aviso a vos mismo
+      from: gmailUser, // Remitente autenticado
+      to: gmailUser,   // Te llega el aviso a vos mismo
       replyTo: email,               // Al hacer clic en "Responder", le responde al cliente
       subject: `💼 Nuevo mensaje de contacto: ${name}`,
       text: `Has recibido un nuevo mensaje de contacto en tu portfolio.\n\nNombre: ${name}\nEmail: ${email}\nMensaje: ${message}`,
