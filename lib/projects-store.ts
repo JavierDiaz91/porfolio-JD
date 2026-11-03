@@ -62,7 +62,6 @@ const defaultProjects: Project[] = [
     description: "Sitio personal desarrollado con Next.js, React y TypeScript para presentar experiencia, proyectos y vías de contacto.",
     imageUrl: "/images/portfolio-profesional.svg",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/JavierDiaz91/porfolio-JD",
     featured: true,
     status: "published",
     createdAt: Date.now() - 86400000 * 7,
@@ -107,11 +106,16 @@ export function getProjects(): Project[] {
           : title.includes("portfolio profesional")
             ? "/images/portfolio-profesional.svg"
             : null
-      if (fallbackImage && !project.imageUrl) {
+      const normalizedProject = { ...project }
+      if (title.includes("portfolio profesional") && normalizedProject.githubUrl) {
+        delete normalizedProject.githubUrl
         migrated = true
-        return { ...project, imageUrl: fallbackImage }
       }
-      return project
+      if (fallbackImage && !normalizedProject.imageUrl) {
+        migrated = true
+        normalizedProject.imageUrl = fallbackImage
+      }
+      return normalizedProject
     })
     if (migrated) localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalized))
     return normalized
