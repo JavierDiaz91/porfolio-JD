@@ -46,15 +46,15 @@ export function ProfileEditor() {
 
   const setDefaultProfile = () => {
     setProfile({
-      name: "Javier Diaz",
-      title: "Javier Diaz | Full Stack Developer",
-      subtitle: "Backend .NET, Frontend Next.js",
-      bio: "Desarrollador Full Stack especializado en el ecosistema .NET (C#, ASP.NET Core, EF Core) y desarrollo moderno con Next.js, Tailwind CSS y TypeScript.",
+      name: "Javier Díaz",
+      title: "Desarrollador de Software | C# y .NET",
+      subtitle: "Desarrollo y soporte de sistemas · Rafaela, Santa Fe",
+      bio: "Técnico Superior en Desarrollo de Software con experiencia profesional desde 2022 en desarrollo y soporte de sistemas. Trabajo con C# y .NET, bases de datos y herramientas de escritorio para procesos internos. Desarrollé un sistema de control de indumentaria y una aplicación Windows para procesar Excel e imprimir etiquetas ZPL.",
       avatarUrl: "",
-      email: "tu@email.com",
+      email: "",
       phone: "",
       location: "Rafaela, Santa Fe, Argentina",
-      githubUrl: "",
+      githubUrl: "https://github.com/JavierDiaz91",
       linkedinUrl: "",
       resumeUrl: "",
       available: true
