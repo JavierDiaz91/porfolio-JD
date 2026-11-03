@@ -30,17 +30,17 @@ export function Footer() {
           >
             <Linkedin className="h-5 w-5" />
           </a>
-          
-          
+
           {/* Hidden admin link */}
-<Link
-  href="/admin"
-  className="text-muted-foreground/40 hover:text-bronze transition-colors p-2 -m-2 rounded-md" 
-  aria-label="Panel de administración"
-  title="Admin"
->
-  <Settings className="h-4.5 w-4.5" />
-</Link>
+          <Link
+            href="/admin"
+            prefetch={false}
+            className="text-muted-foreground/40 hover:text-bronze transition-colors p-2 -m-2 rounded-md"
+            aria-label="Panel de administración"
+            title="Admin"
+          >
+            <Settings className="h-4.5 w-4.5" />
+          </Link>
         </div>
       </div>
     </footer>
