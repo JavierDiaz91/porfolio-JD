@@ -38,7 +38,7 @@ const defaultProjects: Project[] = [
     id: "1",
     title: "Sistema de control de indumentaria y EPP",
     description: "Sistema desarrollado desde cero para registrar la entrega de indumentaria al personal, actualizar el stock y emitir planillas de Elementos de Protección Personal.",
-    imageUrl: "",
+    imageUrl: "/images/indumentaria-epp.svg",
     tags: ["Gestión de stock", "EPP", "Reportes"],
     featured: true,
     status: "published",
@@ -60,9 +60,8 @@ const defaultProjects: Project[] = [
     id: "3",
     title: "Portfolio profesional",
     description: "Sitio personal desarrollado con Next.js, React y TypeScript para presentar experiencia, proyectos y vías de contacto.",
-    imageUrl: "",
+    imageUrl: "/images/portfolio-profesional.svg",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/JavierDiaz91/porfolio-JD",
     featured: true,
     status: "published",
     createdAt: Date.now() - 86400000 * 7,
@@ -99,12 +98,24 @@ export function getProjects(): Project[] {
     const projects: Project[] = JSON.parse(stored)
     let migrated = false
     const normalized = projects.map((project) => {
-      const isLabelProject = project.title.toLocaleLowerCase().includes("impresión de etiquetas")
-      if (isLabelProject && !project.imageUrl) {
+      const title = project.title.toLocaleLowerCase()
+      const fallbackImage = title.includes("impresión de etiquetas")
+        ? "/images/impresion-etiquetas-zebra.svg"
+        : title.includes("indumentaria") || title.includes("epp")
+          ? "/images/indumentaria-epp.svg"
+          : title.includes("portfolio profesional")
+            ? "/images/portfolio-profesional.svg"
+            : null
+      const normalizedProject = { ...project }
+      if (title.includes("portfolio profesional") && normalizedProject.githubUrl) {
+        delete normalizedProject.githubUrl
         migrated = true
-        return { ...project, imageUrl: "/images/impresion-etiquetas-zebra.svg" }
       }
-      return project
+      if (fallbackImage && !normalizedProject.imageUrl) {
+        migrated = true
+        normalizedProject.imageUrl = fallbackImage
+      }
+      return normalizedProject
     })
     if (migrated) localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalized))
     return normalized
