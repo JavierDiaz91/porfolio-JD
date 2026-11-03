@@ -7,15 +7,15 @@ const dataPath = path.join(process.cwd(), "lib/data/profile-data.json")
 
 // Datos por defecto hardcodeados iniciales
 const defaultProfile = {
-  name: "Javier Diaz",
-  title: "Full Stack Developer",
-  subtitle: "Backend .NET, Frontend Next.js",
-  bio: "Soy desarrollador Full Stack con experiencia en backend .NET y frontend con Next.js.",
-  email: "contacto@javierdiaz.dev",
+  name: "Javier Díaz",
+  title: "Desarrollador de Software | C# y .NET",
+  subtitle: "Desarrollo y soporte de sistemas · Rafaela, Santa Fe",
+  bio: "Técnico Superior en Desarrollo de Software con experiencia profesional desde 2022 en desarrollo y soporte de sistemas. Trabajo con C# y .NET, bases de datos y herramientas de escritorio para procesos internos.",
+  email: "",
   phone: "",
   location: "Rafaela, Santa Fe, Argentina",
-  githubUrl: "https://github.com/javierdiaz",
-  linkedinUrl: "https://linkedin.com/in/javierdiaz",
+  githubUrl: "https://github.com/JavierDiaz91",
+  linkedinUrl: "",
   avatarUrl: "",
   resumeUrl: "",
   available: true,
