@@ -7,8 +7,8 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Javier Diaz | Software Developer',
-  description: 'Desarrollador de Software, Backend .NET y Frontend Next.js. Creando soluciones eficientes y bien estructuradas.',
+  title: 'Javier Díaz | Desarrollador de Software',
+  description: 'Técnico Superior en Desarrollo de Software con experiencia en C#, .NET, SQL, aplicaciones de escritorio y soporte de sistemas en Rafaela, Santa Fe.',
   generator: 'v0.app',
   icons: {
     icon: [

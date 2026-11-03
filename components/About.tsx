@@ -4,10 +4,10 @@ import { motion } from "framer-motion"
 
 export function About() {
   const badges = [
-    "Backend C#",
-    "Arquitectura Moderna",
-    "Código Limpio",
-    "Sistemas Mantenibles"
+    "C# y .NET",
+    "SQL y bases de datos",
+    "Aplicaciones Windows",
+    "Soporte de sistemas"
   ];
 
   return (
@@ -53,13 +53,13 @@ export function About() {
           {/* Biografía corregida sin duplicados */}
           <div className="max-w-2xl mx-auto space-y-6 text-zinc-400 text-base md:text-lg leading-relaxed font-normal mb-10 text-center">
             <p>
-              Como <strong className="text-zinc-100 font-semibold">Técnico Superior en Desarrollo de Software</strong>, me apasiona diseñar componentes del lado del servidor robustos, limpios y eficientes. ✨
+              Soy <strong className="text-zinc-100 font-semibold">Técnico Superior en Desarrollo de Software</strong> y trabajo en desarrollo y soporte de sistemas desde 2022.
             </p>
             <p>
-              Mi especialización se centra en el ecosistema de <strong className="text-amber-500 font-semibold">.NET y C#</strong>, creando APIs REST funcionales y arquitecturas web que priorizan la mantenibilidad en producción.
+              Trabajo con <strong className="text-amber-500 font-semibold">C# y .NET</strong>, intervengo en código fuente de aplicaciones empresariales y utilizo bases de datos para analizar y resolver incidentes.
             </p>
             <p>
-              Mi objetivo es transformar requerimientos complejos en código altamente legible, aplicando buenas prácticas y patrones de diseño para asegurar soluciones escalables a largo plazo.
+              También desarrollé herramientas para procesos internos, entre ellas un sistema de control de indumentaria y una aplicación Windows para procesar Excel e imprimir etiquetas ZPL.
             </p>
           </div>
 
