@@ -32,6 +32,7 @@ export interface ProfileData {
 
 const PROJECTS_KEY = "portfolio_projects"
 const PROFILE_KEY = "portfolio_profile"
+const RESTORE_EPP_PROJECT_MIGRATION_KEY = "portfolio_projects_restore_epp_v1"
 
 const defaultProjects: Project[] = [
   {
@@ -91,6 +92,7 @@ export function getProjects(): Project[] {
   const stored = localStorage.getItem(PROJECTS_KEY)
   if (!stored) {
     localStorage.setItem(PROJECTS_KEY, JSON.stringify(defaultProjects))
+    localStorage.setItem(RESTORE_EPP_PROJECT_MIGRATION_KEY, "done")
     return defaultProjects
   }
 
@@ -127,6 +129,21 @@ export function getProjects(): Project[] {
 
       return normalizedProject
     })
+    if (localStorage.getItem(RESTORE_EPP_PROJECT_MIGRATION_KEY) !== "done") {
+      const hasEppProject = normalized.some(
+        (project) =>
+          project.id === "1" ||
+          project.title.toLocaleLowerCase().includes("sistema de control de indumentaria y epp")
+      )
+
+      if (!hasEppProject) {
+        normalized.unshift({ ...defaultProjects[0] })
+        migrated = true
+      }
+
+      localStorage.setItem(RESTORE_EPP_PROJECT_MIGRATION_KEY, "done")
+    }
+
     if (migrated) localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalized))
     return normalized
   } catch {
