@@ -38,7 +38,7 @@ const defaultProjects: Project[] = [
     id: "1",
     title: "Sistema de control de indumentaria y EPP",
     description: "Sistema desarrollado desde cero para registrar la entrega de indumentaria al personal, actualizar el stock y emitir planillas de Elementos de Protección Personal.",
-    imageUrl: "/images/indumentaria-epp.svg",
+    imageUrl: "",
     tags: ["Gestión de stock", "EPP", "Reportes"],
     featured: true,
     status: "published",
@@ -60,7 +60,7 @@ const defaultProjects: Project[] = [
     id: "3",
     title: "Portfolio profesional",
     description: "Sitio personal desarrollado con Next.js, React y TypeScript para presentar experiencia, proyectos y vías de contacto.",
-    imageUrl: "/images/portfolio-profesional.svg",
+    imageUrl: "",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     featured: true,
     status: "published",
@@ -99,22 +99,32 @@ export function getProjects(): Project[] {
     let migrated = false
     const normalized = projects.map((project) => {
       const title = project.title.toLocaleLowerCase()
-      const fallbackImage = title.includes("impresión de etiquetas")
-        ? "/images/impresion-etiquetas-zebra.svg"
-        : title.includes("indumentaria") || title.includes("epp")
-          ? "/images/indumentaria-epp.svg"
-          : title.includes("portfolio profesional")
-            ? "/images/portfolio-profesional.svg"
-            : null
       const normalizedProject = { ...project }
-      if (title.includes("portfolio profesional") && normalizedProject.githubUrl) {
-        delete normalizedProject.githubUrl
+
+      if (
+        (title.includes("indumentaria") || title.includes("epp")) &&
+        normalizedProject.imageUrl === "/images/indumentaria-epp.svg"
+      ) {
+        normalizedProject.imageUrl = ""
         migrated = true
       }
-      if (fallbackImage && !normalizedProject.imageUrl) {
+
+      if (
+        title.includes("portfolio profesional") &&
+        normalizedProject.imageUrl === "/images/portfolio-profesional.svg"
+      ) {
+        normalizedProject.imageUrl = ""
         migrated = true
-        normalizedProject.imageUrl = fallbackImage
       }
+
+      if (
+        title.includes("impresión de etiquetas") &&
+        !normalizedProject.imageUrl
+      ) {
+        normalizedProject.imageUrl = "/images/impresion-etiquetas-zebra.svg"
+        migrated = true
+      }
+
       return normalizedProject
     })
     if (migrated) localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalized))
