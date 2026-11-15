@@ -11,7 +11,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-24 px-6 relative overflow-hidden bg-background">
+    <section id="about" className="relative overflow-hidden py-20 px-6 bg-background">
       {/* Luces de fondo premium (Ambient Glows) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-amber-500/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-10 w-[300px] h-[300px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -37,11 +37,8 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="relative rounded-3xl border border-zinc-800/60 bg-gradient-to-b from-zinc-900/40 to-zinc-950/60 p-8 md:p-12 backdrop-blur-xl shadow-2xl text-center"
+          className="max-w-3xl mx-auto text-center"
         >
-          {/* Sutil línea brillante superior */}
-          <div className="absolute top-0 left-10 right-10 h-[1px] bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
-
           {/* Título de Impacto */}
           <h2 className="text-3xl md:text-4.5xl font-black text-white tracking-tight leading-none mb-6 text-balance">
             Desarrollo soluciones{" "}
@@ -64,14 +61,14 @@ export function About() {
           </div>
 
           {/* Línea Divisoria Atenuada */}
-          <div className="w-24 h-[1px] bg-zinc-800 mx-auto mb-8" />
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent mx-auto mb-8" />
 
           {/* Badges estilizados al estilo del Stack */}
           <div className="flex flex-wrap justify-center gap-3">
             {badges.map((badge, i) => (
               <div
                 key={i}
-                className="text-xs font-medium px-4 py-2 rounded-xl border border-zinc-800/80 bg-zinc-900/50 text-zinc-300 shadow-sm hover:border-amber-500/40 transition-colors duration-300"
+                className="text-xs font-medium px-4 py-2 rounded-full border border-zinc-700/60 bg-white/[0.02] text-zinc-300 hover:border-amber-500/40 transition-colors duration-300"
               >
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange-500 mr-2 animate-pulse" />
                 {badge}
