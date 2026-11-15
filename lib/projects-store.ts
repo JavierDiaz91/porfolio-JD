@@ -33,6 +33,7 @@ export interface ProfileData {
 const PROJECTS_KEY = "portfolio_projects"
 const PROFILE_KEY = "portfolio_profile"
 const RESTORE_EPP_PROJECT_MIGRATION_KEY = "portfolio_projects_restore_epp_v1"
+const ADD_LINKED_PROJECTS_MIGRATION_KEY = "portfolio_projects_add_linked_projects_v1"
 
 const defaultProjects: Project[] = [
   {
@@ -68,6 +69,31 @@ const defaultProjects: Project[] = [
     createdAt: Date.now() - 86400000 * 7,
     updatedAt: Date.now() - 86400000 * 7,
   },
+  {
+    id: "4",
+    title: "Kivra · Gestión para gimnasios",
+    description: "Plataforma SaaS multi-gimnasio para administrar socios, membresías, cobros, asistencia y reservas de clases.",
+    imageUrl: "",
+    tags: ["Next.js", "PostgreSQL", "Mercado Pago"],
+    githubUrl: "https://github.com/JavierDiaz91/gym-app",
+    liveUrl: "https://gym-app-azure-ten.vercel.app",
+    featured: true,
+    status: "published",
+    createdAt: Date.now() - 86400000 * 3,
+    updatedAt: Date.now() - 86400000 * 3,
+  },
+  {
+    id: "5",
+    title: "Turnero web · RENASER Masajes",
+    description: "Aplicación web para consultar servicios y horarios, reservar turnos y gestionar el seguimiento de cada sesión.",
+    imageUrl: "",
+    tags: ["Next.js", "PostgreSQL", "Reservas"],
+    githubUrl: "https://github.com/JavierDiaz91/turneroweb",
+    featured: true,
+    status: "published",
+    createdAt: Date.now() - 86400000 * 2,
+    updatedAt: Date.now() - 86400000 * 2,
+  },
 ]
 
 const defaultProfile: ProfileData = {
@@ -93,6 +119,7 @@ export function getProjects(): Project[] {
   if (!stored) {
     localStorage.setItem(PROJECTS_KEY, JSON.stringify(defaultProjects))
     localStorage.setItem(RESTORE_EPP_PROJECT_MIGRATION_KEY, "done")
+    localStorage.setItem(ADD_LINKED_PROJECTS_MIGRATION_KEY, "done")
     return defaultProjects
   }
 
@@ -142,6 +169,19 @@ export function getProjects(): Project[] {
       }
 
       localStorage.setItem(RESTORE_EPP_PROJECT_MIGRATION_KEY, "done")
+    }
+
+    if (localStorage.getItem(ADD_LINKED_PROJECTS_MIGRATION_KEY) !== "done") {
+      for (const linkedProject of defaultProjects.filter((project) => project.id === "4" || project.id === "5")) {
+        const alreadyAdded = normalized.some(
+          (project) => project.id === linkedProject.id || project.title === linkedProject.title
+        )
+        if (!alreadyAdded) {
+          normalized.push({ ...linkedProject })
+          migrated = true
+        }
+      }
+      localStorage.setItem(ADD_LINKED_PROJECTS_MIGRATION_KEY, "done")
     }
 
     if (migrated) localStorage.setItem(PROJECTS_KEY, JSON.stringify(normalized))
