@@ -70,8 +70,8 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-24 px-6 bg-black/40 relative overflow-hidden">
-      <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="contact" className="relative overflow-hidden py-20 px-6">
+      <div className="absolute -top-40 right-0 w-[28rem] h-[28rem] bg-amber-500/[0.06] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.h2
