@@ -70,7 +70,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden py-20 px-6">
+    <section id="contact" className="relative overflow-hidden pt-16 pb-20 px-6">
       <div className="absolute -top-40 right-0 w-[28rem] h-[28rem] bg-amber-500/[0.06] rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
