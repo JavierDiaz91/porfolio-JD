@@ -11,7 +11,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="relative overflow-hidden py-20 px-6 bg-background">
+    <section id="about" className="relative overflow-hidden pt-20 pb-10 px-6 bg-background">
       {/* Luces de fondo premium (Ambient Glows) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-gradient-to-b from-amber-500/10 to-transparent rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 right-10 w-[300px] h-[300px] bg-orange-500/5 rounded-full blur-[120px] pointer-events-none" />
