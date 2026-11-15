@@ -47,7 +47,7 @@ const cardVariants = {
 
 export function Stack() {
   return (
-    <section id="stack" className="py-24 px-6 bg-secondary/30">
+    <section id="stack" className="relative py-20 px-6">
       <div className="max-w-6xl mx-auto">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export function Stack() {
         </motion.h2>
 
         <p className="text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
-          Experiencia en desarrollo y soporte de sistemas, con foco en .NET y soluciones para necesidades operativas reales.
+          Un recorrido que combina sistemas empresariales, herramientas de escritorio y desarrollo web.
         </p>
 
         <motion.div
@@ -68,7 +68,7 @@ export function Stack() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10"
         >
           {services.map((service) => {
             const IconComponent = service.icon
@@ -77,7 +77,7 @@ export function Stack() {
               <motion.div
                 key={service.title}
                 variants={cardVariants}
-                className="group relative p-8 rounded-xl bg-card border border-platinum/20 hover:border-bronze/50 transition-all duration-300 flex flex-col justify-between"
+                className="group relative flex flex-col gap-5 border-b border-white/[0.08] pb-8 last:border-b-0 md:border-b-0"
                 style={{ boxShadow: "none" }}
                 whileHover={{
                   boxShadow: "0 0 40px var(--bronze-glow)",
@@ -85,13 +85,13 @@ export function Stack() {
                 }}
               >
                 <div>
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-secondary mb-6 group-hover:bg-bronze/10 transition-colors duration-300">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/[0.04] group-hover:bg-bronze/10 transition-colors duration-300">
                     <IconComponent className="h-6 w-6 text-bronze" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-bronze transition-colors duration-300">
+                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-bronze transition-colors duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
+                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base max-w-xl">
                     {service.description}
                   </p>
                 </div>

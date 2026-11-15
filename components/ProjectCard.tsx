@@ -63,10 +63,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
       // 📱 Ajustado: El hover de elevación y glow pesado ahora solo se activa en Desktop (md) para evitar bugs en pantallas táctiles
-      className="group relative overflow-hidden rounded-xl bg-card border border-platinum/20 hover:border-bronze/50 transition-all duration-300 md:hover:-translate-y-1.5 md:hover:shadow-[0_0_50px_var(--bronze-glow)]"
+      className="group relative overflow-hidden rounded-2xl bg-transparent border border-white/[0.08] hover:border-bronze/40 transition-all duration-300 md:hover:-translate-y-1 md:hover:shadow-[0_12px_40px_rgba(180,83,9,0.12)]"
     >
       {/* Project Image Container */}
-      <div className="relative h-48 overflow-hidden bg-secondary">
+      <div className="relative h-44 overflow-hidden bg-white/[0.02]">
         {project.imageUrl ? (
           <Image
             src={project.imageUrl}
@@ -77,7 +77,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             priority={project.title.includes("Indumentaria")} // Carga prioritaria al primer proyecto visible
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-secondary via-card to-secondary">
+          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/[0.02] via-transparent to-bronze/[0.04]">
             <div className="relative">
               <div className="absolute inset-0 blur-xl bg-bronze/20" />
               <Code2 className="relative h-16 w-16 text-muted-foreground/50" />
@@ -128,7 +128,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-6">
+      <div className="p-7">
         <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-bronze transition-colors">
           {project.title}
         </h3>
