@@ -98,9 +98,9 @@ const defaultProjects: Project[] = [
 
 const defaultProfile: ProfileData = {
   name: "Javier Díaz",
-  title: "Desarrollador de Software | C# y .NET",
+  title: "Desarrollador de Software | C#/.NET · JavaScript · TypeScript",
   subtitle: "Desarrollo y soporte de sistemas · Rafaela, Santa Fe",
-  bio: "Técnico Superior en Desarrollo de Software con experiencia profesional desde 2022 en desarrollo y soporte de sistemas. Trabajo con C# y .NET, bases de datos y herramientas de escritorio para procesos internos. Desarrollé un sistema de control de indumentaria y una aplicación Windows para procesar Excel e imprimir etiquetas ZPL.",
+  bio: "Técnico Superior en Desarrollo de Software con experiencia profesional desde 2022 en desarrollo y soporte de sistemas. Trabajo con C# y .NET, bases de datos y herramientas de escritorio para procesos internos. Desarrollé un sistema de control de indumentaria y una aplicación Windows para procesar Excel e imprimir etiquetas ZPL. También desarrollé aplicaciones web con JavaScript, TypeScript, React y Next.js.",
   email: "",
   phone: "",
   location: "Rafaela, Santa Fe, Argentina",
@@ -248,7 +248,21 @@ export function getProfile(): ProfileData {
   }
 
   try {
-    return JSON.parse(stored)
+    const profile: ProfileData = JSON.parse(stored)
+    let migrated = false
+
+    if (profile.title === "Desarrollador de Software | C# y .NET") {
+      profile.title = defaultProfile.title
+      migrated = true
+    }
+
+    if (profile.bio === "Técnico Superior en Desarrollo de Software con experiencia profesional desde 2022 en desarrollo y soporte de sistemas. Trabajo con C# y .NET, bases de datos y herramientas de escritorio para procesos internos. Desarrollé un sistema de control de indumentaria y una aplicación Windows para procesar Excel e imprimir etiquetas ZPL.") {
+      profile.bio = defaultProfile.bio
+      migrated = true
+    }
+
+    if (migrated) localStorage.setItem(PROFILE_KEY, JSON.stringify(profile))
+    return profile
   } catch {
     return defaultProfile
   }
