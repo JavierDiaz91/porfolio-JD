@@ -20,9 +20,9 @@ const services = [
     description: "Herramientas de escritorio para procesos internos, incluyendo procesamiento de planillas Excel e impresión automatizada de etiquetas ZPL.",
   },
   {
-    title: "Desarrollo web",
+    title: "JavaScript, TypeScript y desarrollo web",
     icon: Globe,
-    description: "Portfolio desarrollado con Next.js, React y TypeScript. Experiencia complementaria en interfaces web y publicación de proyectos en GitHub.",
+    description: "Desarrollo de aplicaciones web con JavaScript y TypeScript, utilizando React y Next.js en proyectos como Kivra, RENASER y este portfolio.",
   },
 ]
 
